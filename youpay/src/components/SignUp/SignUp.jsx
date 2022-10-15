@@ -52,7 +52,12 @@ export const SignUp = () => {
           onChange={handleChange}
           value={form.mobile}
         />
-        <Select options={GENDER_OPTIONS} defaultValue={'Select Gender'} />
+        <Select
+          options={GENDER_OPTIONS}
+          name={'gender'}
+          onChange={handleChange}
+          value={form.gender}
+        />
 
         <button
           type="submit"
