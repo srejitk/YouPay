@@ -1,6 +1,13 @@
 import React from 'react';
 
-export const Input = ({ type, name, value, placeholder, onChange }) => {
+export const Input = ({
+  type,
+  name,
+  value,
+  placeholder,
+  onChange,
+  ...rest
+}) => {
   return (
     <input
       className="w-full rounded-md bg-blue-50 px-4 py-2"
@@ -9,6 +16,7 @@ export const Input = ({ type, name, value, placeholder, onChange }) => {
       name={name}
       value={value}
       onChange={onChange}
+      {...rest}
     />
   );
 };
