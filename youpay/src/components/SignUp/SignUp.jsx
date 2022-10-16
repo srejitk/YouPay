@@ -25,48 +25,49 @@ export const SignUp = () => {
   };
 
   return (
-    <section className="flex min-h-screen w-full items-center justify-center bg-red-50">
-      <form
-        onSubmit={onSubmit}
-        className="mx-auto flex h-fit w-[30rem] flex-col items-center justify-start gap-5 rounded-md bg-white p-10"
-      >
-        <h1>Sign Up</h1>
-        <Input
-          type="text"
-          placeholder="Name"
-          name="name"
-          value={form.name}
-          onChange={handleChange}
-        />
-        <Input
-          type="password"
-          placeholder="Password"
-          name="password"
-          value={form.password}
-          onChange={handleChange}
-        />
-        <Input
-          type="mobile"
-          placeholder="Mobile"
-          name="mobile"
-          onChange={handleChange}
-          value={form.mobile}
-        />
-        <Select
-          options={GENDER_OPTIONS}
-          name={'gender'}
-          onChange={handleChange}
-          value={form.gender}
-        />
+    <form
+      onSubmit={onSubmit}
+      className="mx-auto flex h-fit w-full flex-col items-center justify-start gap-5 rounded-md bg-white p-10"
+    >
+      <h1 className="w-full text-left text-2xl ">Sign Up</h1>
+      <Input
+        type="text"
+        placeholder="Name"
+        name="name"
+        value={form.name}
+        onChange={handleChange}
+        required
+      />
+      <Input
+        type="password"
+        placeholder="Password"
+        name="password"
+        value={form.password}
+        onChange={handleChange}
+        required
+      />
+      <Input
+        type="mobile"
+        placeholder="Mobile"
+        name="mobile"
+        onChange={handleChange}
+        value={form.mobile}
+        required
+      />
+      <Select
+        options={GENDER_OPTIONS}
+        name={'gender'}
+        onChange={handleChange}
+        value={form.gender}
+        required
+      />
 
-        <button
-          type="submit"
-          disabled
-          className="w-full  rounded-md border-2 border-transparent bg-blue-500 px-10 py-2 text-white hover:bg-blue-600 disabled:border-gray-200 disabled:bg-gray-50 disabled:text-black"
-        >
-          Sign Up
-        </button>
-      </form>
-    </section>
+      <button
+        type="submit"
+        className="w-full  rounded-md border-2 border-transparent bg-blue-500 px-10 py-2 text-white hover:bg-blue-600 disabled:border-gray-200 disabled:bg-gray-50 disabled:text-black"
+      >
+        Sign Up
+      </button>
+    </form>
   );
 };

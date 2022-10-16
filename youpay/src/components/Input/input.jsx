@@ -10,7 +10,7 @@ export const Input = ({
 }) => {
   return (
     <input
-      className="w-full rounded-md bg-blue-50 px-4 py-2"
+      className="my-1 w-full rounded-md bg-blue-50 px-4 py-2"
       type={type}
       placeholder={placeholder}
       name={name}

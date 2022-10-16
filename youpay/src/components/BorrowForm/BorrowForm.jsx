@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import { useUser } from '../../contexts/user/UserContext';
 import { sendBorrowReq } from '../../services';
 import { LOAN_DURATION } from '../../utils/constants';
 import { Button } from '../Button/Button';
@@ -8,29 +9,29 @@ import { Select } from '../Select/Select';
 
 export const BorrowForm = () => {
   const initialValues = {
-    amount: 0,
+    amount: '',
     message: '',
-    duration: 'Duration',
+    duration: '',
     upi: '',
   };
   const [form, setForm] = useState(initialValues);
+  const { dispatch } = useUser();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
   };
 
-  // TODO Add Loading States
-  // TODO Add validation for UPI Field
   const onSubmit = (e) => {
     e.preventDefault();
-    sendBorrowReq(form);
+    sendBorrowReq(form, dispatch);
     setForm(initialValues);
   };
 
   return (
     <form onSubmit={onSubmit} className="w-[30rem] rounded-md bg-white p-10">
       <h1 className="my-4 text-2xl">Borrow request</h1>
+      <h2>Send a request </h2>
       <Input
         type="number"
         value={form.amount}
@@ -51,7 +52,6 @@ export const BorrowForm = () => {
         onChange={handleChange}
         value={form.duration}
         options={LOAN_DURATION}
-        defaultValue="Duration"
       />
       <Input
         type="text"
