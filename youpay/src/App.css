@@ -5,4 +5,10 @@
   font-weight: 400;
 }
 
+.active {
+  @apply text-blue-500;
+}
 
+.active button {
+  @apply border-blue-500;
+}

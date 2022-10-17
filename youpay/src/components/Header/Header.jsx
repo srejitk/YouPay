@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 import { useUser } from '../../contexts/user/UserContext';
 import { logout } from '../../services';
 
@@ -13,9 +13,32 @@ export const Header = () => {
         <span className="text-blue-500">You</span>Pay
       </h1>
       <div className="flex gap-10">
-        <Link to={'/'}>Home</Link>
-        <Link to={'/auth'}>Auth</Link>
-        <Link to={'/borrow'}>Borrow</Link>
+        <NavLink to={'/'}>
+          <button
+            className={`flex items-center  justify-center rounded-full border-2 border-gray-300 px-3 py-1`}
+          >
+            Home
+          </button>
+        </NavLink>
+
+        <NavLink to={'/borrow'}>
+          {' '}
+          <button
+            className={`flex items-center justify-center rounded-full border-2 border-gray-300 px-3 py-1`}
+          >
+            Borrow
+          </button>
+        </NavLink>
+        <NavLink to={'/auth'}>
+          {' '}
+          <button
+            className={`items-center ${
+              isLoggedin ? ' hidden' : 'flex'
+            } justify-center rounded-full border-2 border-gray-300 px-3 py-1`}
+          >
+            Join us
+          </button>
+        </NavLink>
       </div>
       <button
         className={`flex items-center ${
