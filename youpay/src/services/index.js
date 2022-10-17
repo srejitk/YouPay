@@ -13,7 +13,13 @@ API.interceptors.request.use((req) => {
   return req;
 });
 
-export const signUpUser = async (formData, dispatch) => {
+export const signUpUser = async (
+  formData,
+  dispatch,
+  navigate,
+  pageToRedirect
+) => {
+  const toastId = toast.loading('Signing you up...');
   try {
     const res = await API.post(`/auth/signup`, formData);
     const {
@@ -24,9 +30,14 @@ export const signUpUser = async (formData, dispatch) => {
     if (status === 201) {
       dispatch({ type: 'AUTH', payload: token });
       dispatch({ type: 'SET_USER', payload: newUser });
+      toast.success('Welcome to YouPay', { id: toastId });
+      navigate(pageToRedirect);
     }
   } catch (error) {
-    console.log(error);
+    const errorRes = error.response;
+    toast.error(`Error ${errorRes?.status} : ${errorRes?.data.message}`, {
+      id: toastId,
+    });
   }
 };
 
@@ -51,8 +62,8 @@ export const signInUser = async (
       toast.success('Welcome back', { id: toastId });
     }
   } catch (error) {
-    console.log(error);
-    toast.error("Couldn't sign you in", { id: toastId });
+    const { data, status } = error.response;
+    toast.error(`Error ${status} : ${data.message}`, { id: toastId });
   }
 };
 
@@ -72,9 +83,7 @@ export const sendBorrowReq = async (borrowReqData, dispatch) => {
       });
     }
   } catch (error) {
-    console.log(error);
-    toast.error("Couldn't send your request", {
-      id: toastId,
-    });
+    const { data, status } = error.response;
+    toast.error(`Error ${status} : ${data.message}`, { id: toastId });
   }
 };
