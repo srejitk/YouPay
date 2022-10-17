@@ -1,3 +1,4 @@
+export { HomeScreen } from './HomeScreen/HomeScreen';
 export { BorrowForm } from './BorrowForm/BorrowForm';
 export { Button } from './Button/Button';
 export { CreditScore } from './Cards/CreditScore/CreditScore';

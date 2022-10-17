@@ -34,6 +34,10 @@ export const SignIn = () => {
       className="mx-auto flex h-fit w-full flex-col items-center justify-start gap-5 rounded-md bg-white p-10"
     >
       <h1 className="w-full text-left text-2xl ">Sign In</h1>
+      <p className=" w-full text-left font-light">
+        Get back to <span className="font-medium text-blue-500">You</span>Pay,
+        the simplified borrowing app ⚡
+      </p>
       <Input
         type="tel"
         placeholder="Mobile"

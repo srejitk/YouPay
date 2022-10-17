@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { useUser } from '../../contexts/user/UserContext';
 import { signUpUser } from '../../services';
+import { useNavigate, useLocation } from 'react-router';
 import { GENDER_OPTIONS } from '../../utils/constants';
 import { Input } from '../Input/input';
 import { Select } from '../Select/Select';
@@ -11,6 +13,11 @@ export const SignUp = () => {
     mobile: '',
   };
 
+  const { dispatch } = useUser();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const pageToRedirect = location.state?.from?.pathname || '/';
+
   const [form, setForm] = useState(initialValues);
 
   const handleChange = (e) => {
@@ -20,7 +27,7 @@ export const SignUp = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    signUpUser(form);
+    signUpUser(form, dispatch, navigate, pageToRedirect);
     setForm(initialValues);
   };
 
@@ -30,6 +37,10 @@ export const SignUp = () => {
       className="mx-auto flex h-fit w-full flex-col items-center justify-start gap-5 rounded-md bg-white p-10"
     >
       <h1 className="w-full text-left text-2xl ">Sign Up</h1>
+      <p className=" w-full text-left font-light">
+        Join <span className="font-medium text-blue-500">You</span>Pay to get
+        access to simplified borrowing ⚡
+      </p>
       <Input
         type="text"
         placeholder="Name"
