@@ -31,7 +31,10 @@ export const BorrowForm = () => {
   return (
     <form onSubmit={onSubmit} className="w-[30rem] rounded-md bg-white p-10">
       <h1 className="my-4 text-2xl">Borrow request</h1>
-      <h2>Send a request </h2>
+      <h2 className="my-2 text-gray-500">
+        Send a request to another youpay user.{' '}
+      </h2>
+      <h2 className="mb-3 text-gray-400">eg: 9900990099@youpay.com</h2>
       <Input
         type="number"
         value={form.amount}
