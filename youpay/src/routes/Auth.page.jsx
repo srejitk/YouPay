@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { SignUp } from '../components';
-import { SignIn } from '../components/SignIn/SignIn';
+import { SignUp, SignIn } from '../components';
 export const Auth = () => {
   const [slide, setSlide] = useState(false);
   return (

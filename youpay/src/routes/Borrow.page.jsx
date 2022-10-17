@@ -1,5 +1,5 @@
 import React from 'react';
-import { BorrowForm } from '../components/BorrowForm/BorrowForm';
+import { BorrowForm } from '../components';
 
 export const Borrow = () => {
   return (
